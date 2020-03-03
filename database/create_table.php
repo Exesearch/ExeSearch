@@ -24,6 +24,7 @@ $sql = [
     username VARCHAR(45) NOT NULL,
     password VARCHAR(45) NOT NULL,
     email VARCHAR(45) NOT NULL,
+    occupation VARCHAR(20),
     score INT DEFAULT 0
   );",
   "CREATE TABLE IF NOT EXISTS team(
