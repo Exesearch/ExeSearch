@@ -1,5 +1,5 @@
 <?php
-
+@author [Ridita Hossain] [<rnh202@exeter.ac.uk>]
 session_start();
 
 //establishing connection
