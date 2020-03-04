@@ -85,7 +85,7 @@ if (isset($_POST['login_user'])) {
 
 // Check user login or not
 if(!isset($_SESSION['username'])){
-    header('Location: indexUpdated.php');
+    header('Location: index.php');
 }
 
 //use for profile page
