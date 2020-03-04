@@ -9,8 +9,11 @@ USE Registration;
 `username` VARCHAR(45) NOT NULL,
 `password` VARCHAR(45) NOT NULL,
 `email` VARCHAR(45) NOT NULL,
-`occupation` VARCHAR(45) NOT NULL
+`occupation` VARCHAR(45) NOT NULL,
+`score` INT 
 );
+
+
 
 
  
