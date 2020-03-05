@@ -10,7 +10,7 @@ if ($result->num_rows>0) {
     $rows[] = $row;
   }
 }else {
-  echo "Empty data" . "<br/>";
+  //echo "Empty data" . "<br/>";
 }
 
 $conn->close();
