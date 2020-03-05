@@ -30,7 +30,6 @@ $sql = [
     groupID INT PRIMARY KEY AUTO_INCREMENT,
     groupScore INT,
     groupName VARCHAR(30),
-    score INT DEFAULT 0,
     member1 INT,
     member2 INT,
     member3 INT,
