@@ -28,12 +28,17 @@ if(isset($_POST['submit'])){
     // a user does not already exist with the same username and/or email
     $user_check_query = $conn->prepare"select * from users WHERE username=?";
     $email_check_query = $conn->prepare"select * from users WHERE email=?";
+    //Get the number of users with that username
     $user_check_query->bindparam("s", $username);
-    $email_check_query->bindparam("s", $email);
-    $result = mysqli_query($conn, $user_check_query);
+    $user_check_query->execute();
+    $user_check_query->bind_result($result);
     $usercount = mysqli_num_rows($result);
-    $result = mysqli_query($conn, $email_check_query);
+    //Get the number of email addresses that match
+    $email_check_query->bindparam("s", $email);
+    $email_check_query->execute();
+    $email_check_query->bind_result($result);
     $emailcount = mysqli_num_rows($result);
+	
     if ($usercount > 0) {
         array_push($errors, "Username already exists");
     } elseif ($emailcount > 0) {
