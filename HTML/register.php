@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
 	 // first check the database to make sure 
 	// a user does not already exist with the same username and/or email
 	$user_check_query = "select * from users WHERE username='$username' OR email='$email' LIMIT 1";
-	$result = mysqli_query($db, $user_check_query);
+	$result = mysqli_query($conn, $user_check_query);
 	$user = mysqli_fetch_assoc($result);
   
 	if ($user) { // if user exists
