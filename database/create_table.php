@@ -24,13 +24,13 @@ $sql = [
     username VARCHAR(45) NOT NULL,
     password VARCHAR(45) NOT NULL,
     email VARCHAR(45) NOT NULL,
-    occupation VARCHAR(20),
-    score INT DEFAULT 0
+    occupation VARCHAR(20)
   );",
   "CREATE TABLE IF NOT EXISTS team(
     groupID INT PRIMARY KEY AUTO_INCREMENT,
     groupScore INT,
     groupName VARCHAR(30),
+    score INT DEFAULT 0,
     member1 INT,
     member2 INT,
     member3 INT,
