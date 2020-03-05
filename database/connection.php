@@ -7,7 +7,7 @@
 */
 
 require_once "./configure.php";
-require("./connect.php");
+
 
 $conn = new mysqli(server, user, database,port);
 
