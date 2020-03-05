@@ -29,12 +29,12 @@ if(isset($_POST['submit'])){
     $user_check_query = $conn->prepare"select * from users WHERE username=?";
     $email_check_query = $conn->prepare"select * from users WHERE email=?";
     //Get the number of users with that username
-    $user_check_query->bindparam("s", $username);
+    $user_check_query->bind_param("s", $username);
     $user_check_query->execute();
     $user_check_query->bind_result($result);
     $usercount = mysqli_num_rows($result);
     //Get the number of email addresses that match
-    $email_check_query->bindparam("s", $email);
+    $email_check_query->bind_param("s", $email);
     $email_check_query->execute();
     $email_check_query->bind_result($result);
     $emailcount = mysqli_num_rows($result);
