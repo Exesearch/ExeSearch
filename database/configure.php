@@ -4,9 +4,9 @@
 * @author kenta
 *
 */
-define("server","");
-define("user", "");
-define("pass", "");
-define("database", "");
+define("server","students.emps.ex.ac.uk");
+define("user", "yk326");
+define("pass", "yk326");
+define("database", "yk326");
 
 ?>
