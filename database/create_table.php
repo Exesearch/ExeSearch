@@ -24,8 +24,7 @@ $sql = [
     username VARCHAR(45) NOT NULL,
     password VARCHAR(45) NOT NULL,
     email VARCHAR(45) NOT NULL,
-    groupID INT,
-    FOREIGN KEY(groupID) REFERENCES FROM team(groupID)
+    groupID INT
   );",
   "CREATE TABLE IF NOT EXISTS team(
     groupID INT PRIMARY KEY AUTO_INCREMENT,
