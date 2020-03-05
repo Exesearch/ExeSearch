@@ -26,21 +26,18 @@ if(isset($_POST['submit'])){
 
     // first check the database to make sure
     // a user does not already exist with the same username and/or email
-    $user_check_query = "select * from users WHERE username='$username' OR email='$email' LIMIT 1";
-    $email_check_query = "select * from users WHERE email='$email' LIMIT 1";
+    $user_check_query = $conn->prepare"select * from users WHERE username=?";
+    $email_check_query = $conn->prepare"select * from users WHERE email=?";
+    $user_check_query->bindparam("s", $username);
+    $email_check_query->bindparam("s", $email);
     $result = mysqli_query($conn, $user_check_query);
     $usercount = mysqli_num_rows($result);
     $result = mysqli_query($conn, $email_check_query);
     $emailcount = mysqli_num_rows($result);
-
-    if ($user) { // if user exists
-        if ($usercount > 0) {
-            array_push($errors, "Username already exists");
-        }
-
-        if ($emailcount > 0) {
-            array_push($errors, "Email already exists");
-        }
+    if ($usercount > 0) {
+        array_push($errors, "Username already exists");
+    } elseif ($emailcount > 0) {
+        array_push($errors, "Email already exists");
     }
 
     if($occupation == "Tutor" && $private_key != "secret1"){
@@ -55,7 +52,7 @@ if(isset($_POST['submit'])){
         $hashed_password = md5($password);
         //INSERT SQL QUERY
         $query = mysqli_query($conn, "insert into Users(uname, passwd, email_id, occupation) 
-										values('$username','$hashed_password','$email','$occupation')");
+				values('$username','$hashed_password','$email','$occupation')");
 
         $_SESSION['username'] = $username;
         $_SESSION['success'] = "You are now logged in";
