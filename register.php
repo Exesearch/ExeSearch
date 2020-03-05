@@ -26,8 +26,8 @@ if(isset($_POST['submit'])){
 
     // first check the database to make sure
     // a user does not already exist with the same username and/or email
-    $user_check_query = $conn->prepare"select * from users WHERE username=?";
-    $email_check_query = $conn->prepare"select * from users WHERE email=?";
+    $user_check_query = $conn->prepare("select * from users WHERE username=?");
+    $email_check_query = $conn->prepare("select * from users WHERE email=?");
     //Get the number of users with that username
     $user_check_query->bind_param("s", $username);
     $user_check_query->execute();
