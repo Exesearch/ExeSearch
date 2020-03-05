@@ -1,9 +1,8 @@
 <?php
+require("./connection.php");
 
 session_start();
 
-//establishing connection
-$connect = mysqli_connect("127.0.0.1","root","","registration");
 
 //intiliazing error variable 
 $errors = array(); 
@@ -58,8 +57,8 @@ if(isset($_POST['submit'])){
 
 // LOGIN USER
 if (isset($_POST['login_user'])) {
-  $username = mysqli_real_escape_string($connect, $_POST['username']);
-  $password = mysqli_real_escape_string($connect, $_POST['password']);
+  $username = mysqli_real_escape_string($conn, $_POST['username']);
+  $password = mysqli_real_escape_string($conn, $_POST['password']);
 
   if (empty($username)) {
   	array_push($errors, "Username is required");
