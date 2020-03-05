@@ -8,6 +8,5 @@ define("server","");
 define("user", "");
 define("pass", "");
 define("database", "");
-define("port","");
 
 ?>
