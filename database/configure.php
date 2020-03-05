@@ -4,10 +4,10 @@
 * @author kenta
 *
 */
-define("server","dashdb-txn-sbox-yp-lon02-01.services.eu-gb.bluemix.net");
-define("user", "lgt71482");
+define("server","");
+define("user", "");
 define("pass", "");
-define("database", "exesearchDB");
-define("port","50001");
+define("database", "");
+define("port","");
 
 ?>
