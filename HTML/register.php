@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
 		//hash password 
 		$hashed_password = md5($password);
 		//INSERT SQL QUERY
-		$query = mysqli_query($connect, "insert into users(forename,surname,username,password,email,occupation) 
+		$query = mysqli_query($conn, "insert into users(forename,surname,username,password,email,occupation) 
 										values('$forename','$surname','$username','$hashed_password','$email','$occupation')");
 										
 		$_SESSION['username'] = $username;
@@ -70,7 +70,7 @@ if (isset($_POST['login_user'])) {
   if (count($errors) == 0) {
   	$hashed_password2 = md5($password);
   	$query = "SELECT * FROM users WHERE username='$username' AND password='$hashed_password2'";
-  	$results = mysqli_query($connect, $query);
+  	$results = mysqli_query($conn, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
