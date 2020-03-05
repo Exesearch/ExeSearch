@@ -1,7 +1,7 @@
 <?php
 require("./connection.php");
 
-$sql="SELECT username, score FROM users ORDER BY score DESC LIMIT 5;";
+$sql="SELECT teamName, score FROM team ORDER BY score DESC LIMIT 5;";
 
 
 $result=$conn->query($sql);
@@ -168,7 +168,7 @@ $conn->close();
                     ?>
                     <tr>
                       <td class="cell100 column1"><?php echo $num; ?></td>
-                      <td class="cell100 column2"><?php echo $row['username']; ?></td>
+                      <td class="cell100 column2"><?php echo $row['teamName']; ?></td>
                       <td class="cell100 column3"><?php echo htmlspecialchars($row['score']); ?></td>
                     </tr>
                     <?php
