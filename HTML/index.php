@@ -49,6 +49,7 @@ x
             <input type="password" name="password" placeholder = "Password" id="password" required>
             <button type="submit" name="login_user" value= "Submit">Login</button>
             <p class="message">Not Registered? <a href="#">Register</a></p>
+            <p class="message"><a href="reset-password.php">Forgot Password?</a></p>
         </form>
 
         <!--code to switch between login and registration form, acts like a toggle-->
