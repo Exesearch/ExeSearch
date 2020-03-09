@@ -133,7 +133,7 @@ $conn->close();
 
   <nav id="navigationBar">
     <ul>
-      <li class="profile-icon"><a href="profile.php">Profile</a></li>
+      <li class="profile-icon"><a href="profile.html">Profile</a></li>
       <li class="quiz-icon"><a href="quiz.html">Quiz</a></li>
       <li class="scoreb-icon"><a href="scoreboard.php">Scoreboard</a></li>
       <li class="faq-icon"><a href="FAQ.html">FAQ</a></li>
@@ -151,7 +151,7 @@ $conn->close();
 							<thead>
 								<tr class="row100 head">
 									<th class="cell100 column1">Rank</th>
-									<th class="cell100 column2">Username</th>
+									<th class="cell100 column2">TeamName</th>
 									<th class="cell100 column3">Score</th>
 								</tr>
 							</thead>
