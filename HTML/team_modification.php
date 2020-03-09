@@ -20,12 +20,36 @@ if (($_POST['team_name']!='')&&($_POST['tutor_ID']!='')&&($_POST['member1']!='')
   if ($B==TRUE){
     new_item($conn, $team, $tutor, $m1, $m2, $m3,$m4,$m5,$m6,$m7,$m8,$m9,$m10);
   }else{
-    echo "NO such tutorID";
+    session_start();
+    $error="Error: Tutor ID is invalid.";
+    $_SESSION['message']=$error;
+    header("Location:./tutor.php");
+  }
+}else if (($_POST['team_name']!='')&&($_POST['tutor_ID']!='')&&($_POST['member1']!='')&&($_POST['member2']!='')&&($_POST['member3']!='')&&($_POST['member4']!='')&&
+($_POST['member5']!='')){
+  $team = $_POST['team_name'];
+  $tutor = $_POST['tutor_ID'];
+  $m1 = $_POST['member1'];
+  $m2 = $_POST['member2'];
+  $m3 = $_POST['member3'];
+  $m4 = $_POST['member4'];
+  $m5 = $_POST['member5'];
+  $B=tutor_validation($conn,$tutor);
+  if ($B==TRUE){
+    new_item($conn, $team, $tutor, $m1, $m2, $m3,$m4,$m5,$m6,$m7,$m8,$m9,$m10);
+  }else{
+    session_start();
+    $error="Error: Tutor ID is invalid.";
+    $_SESSION['message']=$error;
+    header("Location:./tutor.php");
   }
 }else if($_POST['delete_team']!=''){
   $delete=$_POST['delete_team'];
   delete_team($conn,$delete);
 }else{
+  session_start();
+  $error="Error: Please enter team name, tutorID, and at least 5 students username to add a team. Or enter a valid team name to delete a team.";
+  $_SESSION['message']=$error;
   header("Location:./tutor.php");
 }
 
