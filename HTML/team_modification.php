@@ -54,7 +54,7 @@ if (($_POST['team_name']!='')&&($_POST['tutor_ID']!='')&&($_POST['member1']!='')
 }
 
 function tutor_validation($conn,$tutor){
-  $sql="SELECT * FROM tutors WHERE tutorID='$tutor';";
+  $sql="SELECT * FROM tutors WHERE tutor_id='$tutor';";
   $result =$conn->query($sql);
   if ($result->num_rows>0) {
     return TRUE;
