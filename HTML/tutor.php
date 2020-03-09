@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (isset($_SESSION['message'])) {
+  $message=$_SESSION['message'];
+}
+
 require("./connection.php");
 
 $sql="SELECT * FROM team;";
@@ -109,6 +115,17 @@ $conn->close();
      	    background-position: center;
      	}
 
+
+
+      .description p {
+        font-size: 20px;
+        padding-top: 7px;
+        margin-bottom: 7px;
+        padding-bottom: 7px;
+        text-align: center;
+        color: white;
+      }
+
       .active {
         background-color: #4CAF50;
       }
@@ -128,13 +145,14 @@ $conn->close();
         margin-left: 8px;
         font-size: 15px;
         width:10px;
+        color: white;
+        
       }
 
       .form_1 input[type=text] {
         width: 75px;
         margin-top: 18px;
         height: 20px;
-
 
       }
 
@@ -155,6 +173,7 @@ $conn->close();
         margin-bottom: 0%;
         margin-top: 2px;
         padding-left: 7%;
+        color: white;
       }
 
       .team_making #Delete {
@@ -162,6 +181,7 @@ $conn->close();
         margin-bottom: 0%;
         margin-top: 2px;
         padding-left: 7%;
+        color: white;
       }
     </style>
 
@@ -180,6 +200,11 @@ $conn->close();
     </nav>
 
     <h2>Teams</h2>
+
+    <div class=description>
+      <p>You can create a team of your turtorial group by giving a team name, your tutor ID, and at least 5 students university username.</p>
+      <p>Please write their username correctly to let them be in your team.</p>
+    </div>
 
     <div class="limiter">
       <div class="container-table1">
@@ -242,6 +267,14 @@ $conn->close();
   		</div>
   	</div>
 
+
+    <?php
+    if (isset($message)) {
+      echo "<p1>$message</p1>";
+      unset($_SESSION['message']);
+    };?>
+
+
     <div class="team_making">
         <p id="Adding">Add a new team:</p>
         <form class="form_1" name="add" action="team_modification.php" method="post">
@@ -277,28 +310,6 @@ $conn->close();
         <input type="text" name="delete_team" value="">
         <input name="delete" type="submit" value="delete">
     </div>
-
-
-    <?php
-    /*
-
-    $sql="INSERT INTO team (teamName,member1,member2,member3,member4,member5,member6,member7,member8,member9,member10)
-     VALUES($teamName,$member1,$member2,$member3,$member4,$member5,$member6,$member7,$member8,$member9,$member10);"
-
-     $result =$conn->query($sql);
-     if ($result=== TRUE)
-     {
-       header("Location:./tutor.php");
-     }
-     else
-     {
-       echo "Error: " . $sql . "<br>" . $conn->error . "<br />";
-     }
-
-     $conn->close();
-     */
-
-     ?>
 
   </body>
 </html>
