@@ -9,7 +9,7 @@
 require_once "./configure.php";
 
 
-$conn = new mysqli(server, user, database,port);
+$conn = new mysqli(server, user, database);
 
 if ($conn->connect_errno) {
   //if it failsto connect, error meesage showu up.
