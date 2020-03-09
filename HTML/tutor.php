@@ -26,7 +26,7 @@ $conn->close();
   <head>
     <!--Metadata-->
 	  <meta charset="utf-8">
-    <meta name="description" content="Scoreboard Page">
+    <meta name="description" content="Tutor Page">
     <meta name="author" content="Kenta">
 	  <meta name="contributors" content="Sophie, Yashaswi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,7 +115,12 @@ $conn->close();
      	    background-position: center;
      	}
 
-
+      .error {
+        color: red;
+        text-align: center;
+        font-size: 20px;
+        text-decoration: underline;
+      }
 
       .description p {
         font-size: 20px;
@@ -146,7 +151,7 @@ $conn->close();
         font-size: 15px;
         width:10px;
         color: white;
-        
+
       }
 
       .form_1 input[type=text] {
@@ -204,6 +209,7 @@ $conn->close();
     <div class=description>
       <p>You can create a team of your turtorial group by giving a team name, your tutor ID, and at least 5 students university username.</p>
       <p>Please write their username correctly to let them be in your team.</p>
+      <p>PLEASE make sure your team name is not used by other team.</p>
     </div>
 
     <div class="limiter">
@@ -242,7 +248,7 @@ $conn->close();
                       ?>
                       <tr>
                         <td class="cell100 column2"><?php echo $row['teamName']; ?></td>
-                        <td class="cell100 column3"><?php echo ($row['tutorID']); ?></td>
+                        <td class="cell100 column3"><?php echo ($row['tutor_id']); ?></td>
                         <td class="cell100 column4"><?php echo ($row['member1']); ?></td>
                         <td class="cell100 column5"><?php echo ($row['member2']); ?></td>
                         <td class="cell100 column6"><?php echo ($row['member3']); ?></td>
@@ -267,12 +273,14 @@ $conn->close();
   		</div>
   	</div>
 
-
-    <?php
-    if (isset($message)) {
-      echo "<p1>$message</p1>";
-      unset($_SESSION['message']);
-    };?>
+    <div class="error">
+      <?php
+      if (isset($message)) {
+        echo "<p1>$message</p1>";
+        unset($_SESSION['message']);
+      };
+      ?>
+    </div>
 
 
     <div class="team_making">
