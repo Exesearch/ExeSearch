@@ -185,14 +185,14 @@ $conn->close();
       }
     </style>
 
-    <title>tutor page</title>
+    <title>Tutor Page</title>
   </head>
   <body>
     <h1>ExeSearch</h1>
 
     <nav id="navigationBar">
       <ul>
-        <li class="profile-icon"><a href="profile.html">Profile</a></li>
+        <li class="profile-icon"><a href="profile.php">Profile</a></li>
         <li class="quiz-icon"><a href="quiz.html">Quiz</a></li>
         <li class="scoreb-icon"><a href="scoreboard.php">Scoreboard</a></li>
         <li class="faq-icon"><a href="FAQ.html">FAQ</a></li>
