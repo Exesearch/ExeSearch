@@ -12,6 +12,7 @@ x
     <meta charset="utf-8">
     <meta name="description" content="Login and Registration Page">
     <meta name="author" content="Ridita Hossain">
+    <meta name="contributor" content="Yashaswi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <h1>ExeSearch</h1>
@@ -20,6 +21,7 @@ x
 <div class="login-page">
     <div class="form">
         <!--form for registration form-->
+        <!--Yashaswi edited registration-->
         <form class= "register-form" action= "register.php" method = "POST">
             <input type="text" name="username" placeholder = "Username" id="username" required>
             <input type="password" name="password" placeholder = "Password" id="password" required>
