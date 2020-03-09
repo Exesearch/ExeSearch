@@ -15,7 +15,7 @@ if ($conn->connect_errno) {
   //if it failsto connect, error meesage showu up.
   echo "Connection fail...".$conn->connect_error."<br/>";
 }else {
-  echo "Successfully connected! <br/>";
+  //echo "Successfully connected! <br/>";
 }
 
  ?>
