@@ -141,7 +141,7 @@ $conn->close();
         /*
         border: solid 2px black;
         */
-        width: 90%;
+        width: 95%;
         display: inline-flex;
         padding-bottom: 10px;
       }
@@ -155,7 +155,7 @@ $conn->close();
       }
 
       .form_1 input[type=text] {
-        width: 75px;
+        width: 70px;
         margin-top: 18px;
         height: 20px;
 
@@ -173,6 +173,10 @@ $conn->close();
 
       }
 
+      .team_making{
+        width: 90%;
+      }
+
       .team_making #Adding {
         font-size: 30px;
         margin-bottom: 0%;
@@ -187,6 +191,10 @@ $conn->close();
         margin-top: 2px;
         padding-left: 7%;
         color: white;
+      }
+
+      .limiter{
+        width: 90%;
       }
     </style>
 
