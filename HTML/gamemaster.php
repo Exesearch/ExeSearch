@@ -158,7 +158,7 @@
     <div id="center001">
         <div id ="color001">
 
-
+            <h3> Create Game</h3>
         <form class= "game-form" action= "create_game.php" method = "POST">
 
             <label>Enter Game Name:</label>
@@ -203,6 +203,7 @@
                         <input type="text" name ="qns1" placeholder = "Question 1" id= "qns1" >
                         <input type="text" name = "ans1"  placeholder = "Answer 1" id = "ans1">
                     </label>
+                    </br>
                     <label for = "point_one"><span> Points for Q1: </span>
                         <input type="number" id="quantity" name="pt1" min="1" max="5">
                     </label>
@@ -224,7 +225,9 @@
                 <div class="locations-colors pc-col quote-sizes"><label for = "question_two"><span> Question 2: </span>
                         <input type="text" name ="qns2" placeholder = "Question 2" id= "qns2"  > <input type="text" name = "ans2" placeholder = "Answer 2" id = "ans2">
                     </label>
+                    </br>
                     <label for = "point_two"><span> Points for Q2: </span>
+
                         <input type="number" id="quantity" name="pt2" min="1" max="5">
                     </label>
                 </div>
@@ -245,7 +248,9 @@
                 <div class="locations-colors pc-col quote-sizes"><label for = "question_three"><span> Question 3: </span>
                         <input type="text" name ="qns3" placeholder = "Question 3" id= "qns3"  > <input type="text" name = "ans3" placeholder = "Answer 3" id = "ans3">
                     </label>
+                    </br>
                     <label for = "point_three"><span> Points for Q3: </span>
+
                         <input type="number" id="quantity" name="pt3" min="1" max="5">
                     </label>
                 </div>
@@ -266,6 +271,7 @@
                 <div class="locations-colors pc-col quote-sizes"><label for = "question_four"><span> Question 4: </span>
                         <input type="text" name ="qns4" placeholder = "Question 4" id= "qns4"  > <input type="text" name = "ans4" placeholder = "Answer 4" id = "ans4">
                     </label>
+                    </br>
                     <label for = "point_three"><span> Points for Q4: </span>
                         <input type="number" id="quantity" name="pt4" min="1" max="5">
                     </label>
@@ -288,6 +294,7 @@
                 <div class="locations-colors pc-col quote-sizes"><label for = "question_five"><span> Question 5: </span>
                         <input type="text" name ="qns5" placeholder = "Question 5" id= "qns5"  > <input type="text" name = "ans5" placeholder = "Answer 5" id = "ans5">
                     </label>
+                    </br>
                     <label for = "point_four"><span> Points for Q5: </span>
                         <input type="number" id="quantity" name="pt5" min="1" max="5">
                     </label>
