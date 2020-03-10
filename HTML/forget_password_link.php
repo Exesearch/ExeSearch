@@ -9,15 +9,15 @@ $username = $_POST['username'];
 $newPassword = md5($_POST['newPassword']);
 $repeatnewPassword = md5($_POST['newPassword2']);
 
-
 if(isset($_POST['submit'])){
-	//check two new passwords
-	if($newPassword == $repeatnewPassword){
-		mysqli_query($conn,"UPDATE Users SET passwd = '$newPassword' WHERE uname= '$username'") or die("change password failed");
-		echo("Password Changed");
-	}else{
-		echo("Passwords dont match!");
-	}
+    //check two new passwords
+    if($newPassword == $repeatnewPassword){
+        mysqli_query($conn,"UPDATE Users SET passwd = '$newPassword' WHERE uname= '$username'");
+        echo("Password Changed");
+        header('Location: ./index.php');
+    }else{
+        echo("Passwords dont match!");
+    }
 }
 ?>
 
@@ -38,18 +38,21 @@ if(isset($_POST['submit'])){
 </head>
 <body>
 <h1>Change Password<h1>
- <!--form for Change password-->
-<form action='' method='post'>
+        <!--form for Change password-->
+        <form action='' method='post'>
 
-	<label for= "username">Username:</label>
-	<input type="text" name="username" placeholder = "Username" id="username" required>
-	<label for= "newPassword">New Password:</label>
-	<input type="newPassword" name="newPassword" id="newPassword" required>
-	<label for= "newPassword">Repeat New Password:</label>
-	<input type="newPassword2" name="newPassword2" id="newPassword2" required>
-	<button type="submit" name="submit" value= "Submit">Submit</button>
+            <label for= "username">Username:</label>
+            <input type="text" name="username" placeholder = "Username" id="username" required>
+            </br>
+            <label for= "newPassword">New Password:</label>
+            <input type="newPassword" name="newPassword" id="newPassword" required>
+            </br>
+            <label for= "newPassword">Repeat New Password:</label>
+            <input type="newPassword2" name="newPassword2" id="newPassword2" required>
+            </br>
+            <button type="submit" name="submit" value= "Submit">Submit</button>
 
-</form>
+        </form>
 </body>
 </html>
 
