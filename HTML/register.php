@@ -1,4 +1,8 @@
 <?php
+/*
+ * @author Ridita Hossain 
+ */
+
 session_start();
 $conn = mysqli_connect("emps-sql.ex.ac.uk","yk326","yk326","yk326","3306");
 
