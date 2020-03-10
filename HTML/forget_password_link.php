@@ -1,4 +1,7 @@
 <?php
+/*
+ * @author Ridita Hossain 
+ */
 session_start();
 
 //connecting to database
