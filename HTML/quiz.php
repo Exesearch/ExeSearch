@@ -222,8 +222,21 @@ if ($lresult->num_rows>0) {
         /** Converts numeric degrees to radians */
         return Value * Math.PI / 180;
     }
+	   
+	//Code to refresh the page if the game progress changes
+	//Written by: Nell
+	var currentQuestion = 1;	//Current game progress
+	var nextQuestion = 1;	//Fetched game progress
+	function refreshPage() {
+		if(currentQuestion != nextQuestion) {
+			currentQuestion = nextQuestion;
+			location.reload(forceGet);
+		}
+		setTimeout(refreshPage, 5000);	//Run every 5 seconds.
+	}
+	refreshPage();
+
     </script>
 
 </body>
 </html>
-
