@@ -45,7 +45,7 @@ if ($lresult->num_rows>0) {
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript" href="quiz.js"></script>
 
-<body onload="refreshPage()">
+<body onload="refreshPage(1, 1)">
 
 <h1>ExeSearch</h1>
 
