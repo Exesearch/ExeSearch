@@ -2,10 +2,10 @@
 require("./connection.php");
 
 
-if (($_POST['team_name']!='')&&($_POST['tutor_ID']!='')&&($_POST['member1']!='')&&($_POST['member2']!='')&&($_POST['member3']!='')&&($_POST['member4']!='')&&
-($_POST['member5']!='')&&($_POST['member6']!='')&&($_POST['member7']!='')&&($_POST['member8']!='')&&($_POST['member9']!='')&&($_POST['member10']!='')) {
+if (($_POST['team_name']!='')&&($_POST['tutor_name']!='')&&($_POST['member1']!='')&&($_POST['member2']!='')&&($_POST['member3']!='')&&($_POST['member4']!='')&&
+($_POST['member5']!='')){
   $team = $_POST['team_name'];
-  $tutor = $_POST['tutor_ID'];
+  $tutor = $_POST['tutor_name'];
   $m1 = $_POST['member1'];
   $m2 = $_POST['member2'];
   $m3 = $_POST['member3'];
@@ -16,30 +16,13 @@ if (($_POST['team_name']!='')&&($_POST['tutor_ID']!='')&&($_POST['member1']!='')
   $m8 = $_POST['member8'];
   $m9 = $_POST['member9'];
   $m10 = $_POST['member10'];
-  $B=tutor_validation($conn,$tutor);
+  $ID = getID($conn,$tutor);
+  $B=tutor_validation($conn,$ID);
   if ($B==TRUE){
-    new_item($conn, $team, $tutor, $m1, $m2, $m3,$m4,$m5,$m6,$m7,$m8,$m9,$m10);
+    new_item($conn, $team,$m1, $m2, $m3,$m4,$m5,$m6,$m7,$m8,$m9,$m10,$ID);
   }else{
     session_start();
-    $error="Error: Tutor ID is invalid.";
-    $_SESSION['message']=$error;
-    header("Location:./tutor.php");
-  }
-}else if (($_POST['team_name']!='')&&($_POST['tutor_ID']!='')&&($_POST['member1']!='')&&($_POST['member2']!='')&&($_POST['member3']!='')&&($_POST['member4']!='')&&
-($_POST['member5']!='')){
-  $team = $_POST['team_name'];
-  $tutor = $_POST['tutor_ID'];
-  $m1 = $_POST['member1'];
-  $m2 = $_POST['member2'];
-  $m3 = $_POST['member3'];
-  $m4 = $_POST['member4'];
-  $m5 = $_POST['member5'];
-  $B=tutor_validation($conn,$tutor);
-  if ($B==TRUE){
-    new_item($conn, $team, $tutor, $m1, $m2, $m3,$m4,$m5,$m6,$m7,$m8,$m9,$m10);
-  }else{
-    session_start();
-    $error="Error: Tutor ID is invalid.";
+    $error="Error: Tutor's name is invalid.";
     $_SESSION['message']=$error;
     header("Location:./tutor.php");
   }
@@ -48,7 +31,7 @@ if (($_POST['team_name']!='')&&($_POST['tutor_ID']!='')&&($_POST['member1']!='')
   delete_team($conn,$delete);
 }else{
   session_start();
-  $error="Error: Please enter team name, tutorID, and at least 5 students username to add a team. Or enter a valid team name to delete a team.";
+  $error="Error: Please enter TeamName, TutorName, and at least 5 students username to add a team. Or enter a valid TeamName to delete.";
   $_SESSION['message']=$error;
   header("Location:./tutor.php");
 }
@@ -63,9 +46,9 @@ function tutor_validation($conn,$tutor){
   }
 }
 
-function new_item($conn, $team, $tutor, $m1, $m2, $m3,$m4,$m5,$m6,$m7,$m8,$m9,$m10) {
+function new_item($conn, $team, $m1, $m2, $m3,$m4,$m5,$m6,$m7,$m8,$m9,$m10,$tutor) {
   //Insert a new product to the stock table by specifying all informtaion
-  $sql="INSERT INTO team VALUES(NULL,'$team',0, '$tutor', '$m1', '$m2', '$m3','$m4','$m5','$m6','$m7','$m8','$m9','$m10');";
+  $sql="INSERT INTO team VALUES(NULL,'$team',0, '$m1', '$m2', '$m3','$m4','$m5','$m6','$m7','$m8','$m9','$m10','$tutor');";
   $result =$conn->query($sql);
   if ($result=== TRUE)
   {
@@ -76,6 +59,25 @@ function new_item($conn, $team, $tutor, $m1, $m2, $m3,$m4,$m5,$m6,$m7,$m8,$m9,$m
     echo "Error: " . $sql . "<br>" . $conn->error . "<br />";
   }
 }
+
+function getID($conn,$tutor_id){
+  $sql ="SELECT * FROM tutors WHERE tutor_name='$tutor_id';";
+  $result =$conn->query($sql);
+  if ($result->num_rows>0) {
+    echo "OH\n";
+    while ($row=$result->fetch_assoc()) {
+      $rows[] = $row;
+    }
+    foreach ($rows as $row){
+      return $row['tutor_id'];
+    }
+  }else {
+    echo "NNNNNN";
+  }
+
+}
+
+
 
 function delete_team($conn,$delete){
   $sql ="DELETE FROM team WHERE teamName='$delete';";
