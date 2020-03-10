@@ -72,7 +72,7 @@ function getID($conn,$tutor_id){
       return $row['tutor_id'];
     }
   }else {
-    echo "NNNNNN";
+    return none;
   }
 
 }
