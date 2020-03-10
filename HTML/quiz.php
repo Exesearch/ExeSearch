@@ -119,7 +119,7 @@ if ($lresult->num_rows>0) {
               echo "as".$row['qnid']." = input00".$row['qnid'].".value;";
 
               echo "if (as".$row['qnid']." == ".'"'.$row['answer'].'"'.") {";
-              echo "an".$row['qnid']." += 1;";
+              echo "an".$row['qnid']." = 1;";
               echo "input00".$row['qnid'].".value = as".$row['qnid'].";";
               echo "check00".$row['qnid'].".innerHTML = \"<text class=button002>\" + \"✔\" + \"</text>\";";
               echo "}else{";
@@ -128,7 +128,6 @@ if ($lresult->num_rows>0) {
               echo "}";
 
               ?>
-              alert(an1);
               <?php } ?>
               <?php foreach($lrows as $lrow){ ?>
                 <?php
