@@ -17,8 +17,8 @@
 <?php
 
 //connecting to database
-$conn = mysqli_connect("127.0.0.1","root","","registration");
-//$conn = mysqli_connect("emps-sql.ex.ac.uk","yk326","yk326","yk326","3306");
+
+$conn = mysqli_connect("emps-sql.ex.ac.uk","yk326","yk326","yk326","3306");
 
 $sql = "SELECT * FROM games";
 $result= $conn-> query($sql);
