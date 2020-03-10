@@ -64,7 +64,6 @@ function getID($conn,$tutor_id){
   $sql ="SELECT * FROM tutors WHERE tutor_name='$tutor_id';";
   $result =$conn->query($sql);
   if ($result->num_rows>0) {
-    echo "OH\n";
     while ($row=$result->fetch_assoc()) {
       $rows[] = $row;
     }
