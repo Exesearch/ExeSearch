@@ -1,7 +1,7 @@
 <?php
 require("./connection.php");
 
-$sql="SELECT teamName, score FROM team ORDER BY score DESC LIMIT 5;";
+$sql="SELECT groupName, score FROM team ORDER BY score DESC LIMIT 5;";
 
 
 $result=$conn->query($sql);
@@ -29,8 +29,7 @@ $conn->close();
 	  <meta name="contributors" content="Sophie, Yashaswi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--Icons courtesy of Freepik from www.flaticon.com-->
-    <!--Static table example used for this website courtesy of https://colorlib.com/wp/template/fixed-header-table/-->
+
 
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 	  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -168,7 +167,7 @@ $conn->close();
                     ?>
                     <tr>
                       <td class="cell100 column1"><?php echo $num; ?></td>
-                      <td class="cell100 column2"><?php echo $row['teamName']; ?></td>
+                      <td class="cell100 column2"><?php echo $row['groupName']; ?></td>
                       <td class="cell100 column3"><?php echo htmlspecialchars($row['score']); ?></td>
                     </tr>
                     <?php
