@@ -7,7 +7,7 @@ if (isset($_SESSION['message'])) {
 
 require("./connection.php");
 
-$sql="SELECT * FROM team;";
+$sql="SELECT * FROM team JOIN tutors;";
 
 $result=$conn->query($sql);
 if ($result->num_rows>0) {
@@ -41,6 +41,7 @@ $conn->close();
 	  <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="style.css">
 
+    <script src="./confirmation.js"></script>
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/bootstrap/js/popper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -194,6 +195,7 @@ $conn->close();
       }
 
       .limiter{
+
         width: 90%;
       }
     </style>
@@ -215,9 +217,9 @@ $conn->close();
     <h2>Teams</h2>
 
     <div class=description>
-      <p>You can create a team of your turtorial group by giving a team name, your tutor ID, and at least 5 students university username.</p>
-      <p>Please write their username correctly to let them be in your team.</p>
-      <p>PLEASE make sure your team name is not used by other team.</p>
+      <p>You can create a team of your turtorial group by giving a team name, your username(as a tutor), and at least 5 students university username.</p>
+      <p>Please write their usernames correctly to let them be in your team.</p>
+      <p>PLEASE make sure your team name is not used by other team listed below.</p>
     </div>
 
     <div class="limiter">
@@ -228,18 +230,18 @@ $conn->close();
   						<table>
   							<thead>
   								<tr class="row100 head">
-  									<th class="cell100 column2">TeamName</th>
-  									<th class="cell100 column3">tutorID</th>
-                    <th class="cell100 column4">member</th>
-                    <th class="cell100 column5">member</th>
-                    <th class="cell100 column6">member</th>
-                    <th class="cell100 column7">member</th>
-                    <th class="cell100 column8">member</th>
-                    <th class="cell100 column9">member</th>
-                    <th class="cell100 column10">member</th>
-                    <th class="cell100 column11">member</th>
-                    <th class="cell100 column12">member</th>
-                    <th class="cell100 column13">member</th>
+  									<th width=15%>TeamName</th>
+  									<th width=15%>TutorName</th>
+                    <th width=7%>member</th>
+                    <th width=7%>member</th>
+                    <th width=7%>member</th>
+                    <th width=7%>member</th>
+                    <th width=7%>member</th>
+                    <th width=7%>member</th>
+                    <th width=7%>member</th>
+                    <th width=7%>member</th>
+                    <th width=7%>member</th>
+                    <th width=7%>member</th>
   								</tr>
   							</thead>
   						</table>
@@ -255,18 +257,18 @@ $conn->close();
                     foreach($rows as $row){
                       ?>
                       <tr>
-                        <td class="cell100 column2"><?php echo $row['teamName']; ?></td>
-                        <td class="cell100 column3"><?php echo ($row['tutor_id']); ?></td>
-                        <td class="cell100 column4"><?php echo ($row['member1']); ?></td>
-                        <td class="cell100 column5"><?php echo ($row['member2']); ?></td>
-                        <td class="cell100 column6"><?php echo ($row['member3']); ?></td>
-                        <td class="cell100 column7"><?php echo ($row['member4']); ?></td>
-                        <td class="cell100 column8"><?php echo ($row['member5']); ?></td>
-                        <td class="cell100 column9"><?php echo ($row['member6']); ?></td>
-                        <td class="cell100 column10"><?php echo ($row['member7']); ?></td>
-                        <td class="cell100 column11"><?php echo ($row['member8']); ?></td>
-                        <td class="cell100 column12"><?php echo ($row['member9']); ?></td>
-                        <td class="cell100 column13"><?php echo ($row['member10']); ?></td>
+                        <td width=15%><?php echo $row['teamName']; ?></td>
+                        <td width=15%><?php echo ($row['tutor_name']); ?></td>
+                        <td width=7%><?php echo ($row['member1']); ?></td>
+                        <td width=7%><?php echo ($row['member2']); ?></td>
+                        <td width=7%><?php echo ($row['member3']); ?></td>
+                        <td width=7%><?php echo ($row['member4']); ?></td>
+                        <td width=7%><?php echo ($row['member5']); ?></td>
+                        <td width=7%><?php echo ($row['member6']); ?></td>
+                        <td width=7%><?php echo ($row['member7']); ?></td>
+                        <td width=7%><?php echo ($row['member8']); ?></td>
+                        <td width=7%><?php echo ($row['member9']); ?></td>
+                        <td width=7%><?php echo ($row['member10']); ?></td>
                       </tr>
                       <?php
                       $num+=1;
@@ -296,8 +298,8 @@ $conn->close();
         <form class="form_1" name="add" action="team_modification.php" method="post">
         <p>TeamName:</p>
         <input type="text" name="team_name" value="">
-        <p>Tutor'sID:</p>
-        <input type="text" name="tutor_ID" value="">
+        <p>TutorName:</p>
+        <input type="text" name="tutor_name" value="">
         <p>Username:</p>
         <input type="text" name="member1" value="">
         <p>Username:</p>
@@ -324,7 +326,7 @@ $conn->close();
       <form class="form_1" name="delete" action="team_modification.php" method="post">
         <p>TeamName:</p>
         <input type="text" name="delete_team" value="">
-        <input name="delete" type="submit" value="delete">
+        <input name="delete" type="submit" value="delete" onclick='return function1();'>
     </div>
 
   </body>
