@@ -257,7 +257,7 @@ $conn->close();
                     foreach($rows as $row){
                       ?>
                       <tr>
-                        <td width=15%><?php echo $row['teamName']; ?></td>
+                        <td width=15%><?php echo $row['groupName']; ?></td>
                         <td width=15%><?php echo ($row['tutor_name']); ?></td>
                         <td width=7%><?php echo ($row['member1']); ?></td>
                         <td width=7%><?php echo ($row['member2']); ?></td>
