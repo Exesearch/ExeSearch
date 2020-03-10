@@ -1,8 +1,6 @@
 //Code to refresh the page if the game progress changes
 //Written by: Nell
-function refreshPage() {
-	var currentQuestion = 1;
-	var nextQuestion = 1;
+function refreshPage(currentQuestion, nextQuestion) {
 	if(currentQuestion != nextQuestion) {
 		currentQuestion = nextQuestion;
 		location.reload(true);
