@@ -1,7 +1,7 @@
 <?php
 require("./connection.php");
 
-$sql="SELECT teamName, score FROM team ORDER BY score DESC LIMIT 5;";
+$sql="SELECT groupName, score FROM team ORDER BY score DESC LIMIT 5;";
 
 
 $result=$conn->query($sql);
