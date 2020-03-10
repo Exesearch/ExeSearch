@@ -116,11 +116,10 @@
   vertical-align: top
 }
 
-.location-6,
-.location-7,
-.location-8,
-.location-9,
-.location-10 {
+.location-4,
+.location-5,
+.location-6
+ {
   display: none
 }
 
@@ -162,18 +161,8 @@
    <div class="gamemaster-page">
       <div class="gamemaster-form">
         <h1> GAME MASTER </h1>
-        <!--form for registration form-->
             <form class= "game-form" action= "blah.php" method = "POST">
-                <input type="text" name ="qns1" placeholder = "Question 1" id= "qns1" size="50" > <input type="text" name = "ans1" id = "ans1">
-                <input type="text" name ="qns2" placeholder = "Question 2" id= "qns2" size="50" > <input type="text" name = "ans2" id = "ans2">
-                <input type="text" name ="qns3" placeholder = "Question 3" id= "qns3" size="50" > <input type="text" name = "ans3" id = "ans3">
-                <input type="text" name ="qns4" placeholder = "Question 4" id= "qns4" size="50" > <input type="text" name = "ans4" id = "ans4">
-                <input type="text" name ="qns5" placeholder = "Question 5" id= "qns5" size="50" > <input type="text" name = "ans5" id = "ans5">
-                <div>
 
-
-                  <label for="questionspoints">Total Question Points</label>
-                </div>
                 <!--Locations drop down-->
                 <div class="pc-row location-1">
                     <h3>Choose location below</h3>
@@ -188,8 +177,14 @@
                         <option value="Amory">Amory Building</option>
                       </select>
                     </label>
-
-                    </div>
+                    <div class="locations-colors pc-col quote-sizes"><label for = "question_one"><h4>Set Q&A below</h4><span> Question 1: </span>
+                      <input type="text" name ="qns1" placeholder = "Question 1" id= "qns1" > <input type="text" name = "ans1"  placeholder = "Answer 1" id = "ans1">
+                    </label>
+                      <label for = "point_one"><span> Points for Q1: </span>
+                    <input type="number" id="quantity" name="pt1" min="1" max="5">
+                  </label>
+                </div>
+                  </div>
 
                     <div class="pc-row location-2">
                         <label for="location_2"><span>Location 2</span>
@@ -203,7 +198,13 @@
                             <option value="Amory">Amory Building</option>
                           </select>
                         </label>
-
+                        <div class="locations-colors pc-col quote-sizes"><label for = "question_two"><span> Question 2: </span>
+                          <input type="text" name ="qns2" placeholder = "Question 2" id= "qns2"  > <input type="text" name = "ans2" placeholder = "Answer 2" id = "ans2">
+                        </label>
+                        <label for = "point_two"><span> Points for Q2: </span>
+                      <input type="number" id="quantity" name="pt2" min="1" max="5">
+                    </label>
+                  </div>
                         </div>
 
                         <div class="pc-row location-3">
@@ -218,7 +219,13 @@
                                 <option value="Amory">Amory Building</option>
                               </select>
                             </label>
-
+                            <div class="locations-colors pc-col quote-sizes"><label for = "question_three"><span> Question 3: </span>
+                              <input type="text" name ="qns3" placeholder = "Question 3" id= "qns3"  > <input type="text" name = "ans3" placeholder = "Answer 3" id = "ans3">
+                            </label>
+                            <label for = "point_three"><span> Points for Q3: </span>
+                          <input type="number" id="quantity" name="pt3" min="1" max="5">
+                        </label>
+                      </div>
                             </div>
 
                             <div class="pc-row location-4">
@@ -233,6 +240,13 @@
                                     <option value="Amory">Amory Building</option>
                                   </select>
                                 </label>
+                                <div class="locations-colors pc-col quote-sizes"><label for = "question_four"><span> Question 4: </span>
+                                  <input type="text" name ="qns4" placeholder = "Question 4" id= "qns4"  > <input type="text" name = "ans4" placeholder = "Answer 4" id = "ans4">
+                                </label>
+                                <label for = "point_three"><span> Points for Q4: </span>
+                              <input type="number" id="quantity" name="pt4" min="1" max="5">
+                            </label>
+                          </div>
 
                                 </div>
 
@@ -248,8 +262,35 @@
                                         <option value="Amory">Amory Building</option>
                                       </select>
                                     </label>
-
+                                    <div class="locations-colors pc-col quote-sizes"><label for = "question_five"><span> Question 5: </span>
+                                      <input type="text" name ="qns5" placeholder = "Question 5" id= "qns5"  > <input type="text" name = "ans5" placeholder = "Answer 5" id = "ans5">
+                                    </label>
+                                    <label for = "point_four"><span> Points for Q5: </span>
+                                  <input type="number" id="quantity" name="pt5" min="1" max="5">
+                                </label>
+                              </div>
                                   </div>
+
+                                  <div class="pc-row location-6">
+                                      <label for="location_6"><span>Location 6</span>
+                                        <select name="location_6" class="linked-drop-down">
+                                          <option value="">choose location</option>
+                                          <option value="Cornwall">Cornwall House</option>
+                                          <option value="Forum">Forum</option>
+                                          <option value="Harrisons">Harrisons Building</option>
+                                          <option value="Northcott">NorthCott Theatre</option>
+                                          <option value="GreatHall">Great Hall</option>
+                                          <option value="Amory">Amory Building</option>
+                                        </select>
+                                      </label>
+                                      <div class="locations-colors pc-col quote-sizes"><label for = "question_six"><span> Question 6: </span>
+                                        <input type="text" name ="qns6" placeholder = "Question 6" id= "qns6"  > <input type="text" name = "ans6" placeholder = "Answer 6" id = "ans6">
+                                      </label>
+                                      <label for = "point_five"><span> Points for Q6: </span>
+                                    <input type="number" id="quantity" name="pt6" min="1" max="5">
+                                  </label>
+                                </div>
+                                      </div>
 
 
 <br />
@@ -264,7 +305,7 @@
             </div>
 
           <script>
-            var i=5;
+            var i=3;
 var disables = {
   Cornwall: ["Cornwall"],
   Forum:["Forum"],
@@ -274,8 +315,8 @@ var disables = {
   Amory:["Amory"]
 }
 $(".addonemore").click(function() {
-  if (i > 9) {
-    alert("You can add only a maximum of 10 locations");
+  if (i > 7) {
+    alert("You can add only a maximum of 7 locations");
   } else {
     i++;
     $('.location-' + i).css({
@@ -284,8 +325,8 @@ $(".addonemore").click(function() {
   }
 });
 $(".rmone").click(function() {
-  if (i < 6) {
-    alert("You need at least five location");
+  if (i < 4) {
+    alert("You need at least three location");
   } else {
     $('.location-' + i).css({
       'display': 'none'
