@@ -80,7 +80,7 @@ function getID($conn,$tutor_id){
 
 
 function delete_team($conn,$delete){
-  $sql ="DELETE FROM team WHERE teamName='$delete';";
+  $sql ="DELETE FROM team WHERE groupName='$delete';";
   $result =$conn->query($sql);
   if ($result=== TRUE)
   {
