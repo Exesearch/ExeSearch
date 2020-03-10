@@ -226,11 +226,12 @@ if ($lresult->num_rows>0) {
 	//Code to refresh the page if the game progress changes
 	//Written by: Nell
 	var currentQuestion = 1;	//Current game progress
-	var nextQuestion = 1;	//Fetched game progress
+	var nextQuestion = 1;		//Fetched game progress
 	function refreshPage() {
+		//Query database here
 		if(currentQuestion != nextQuestion) {
 			currentQuestion = nextQuestion;
-			location.reload(forceGet);
+			location.reload(true);
 		}
 		setTimeout(refreshPage, 5000);	//Run every 5 seconds.
 	}
