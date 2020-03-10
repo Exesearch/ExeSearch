@@ -160,7 +160,7 @@
    <div class="gamemaster-page">
       <div class="gamemaster-form">
         <h1> GAME MASTER </h1>
-            <form class= "game-form" action= "blah.php" method = "POST">
+            <form class= "game-form" action= "editgame.php" method = "POST">
 
                 <!--Locations drop down-->
                 <div class="pc-row location-1">
