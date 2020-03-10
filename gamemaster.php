@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -167,7 +166,7 @@
                 <div class="pc-row location-1">
                     <h3>Choose location below</h3>
                     <label for="location_one"><span>Location 1</span>
-                      <select name="location_1" class="linked-drop-down">
+                      <select name="location_1" class="linked-drop-down" required>
                         <option value="">choose location</option>
                         <option value="Cornwall">Cornwall House</option>
                         <option value="Forum">Forum</option>
@@ -178,17 +177,17 @@
                       </select>
                     </label>
                     <div class="locations-colors pc-col quote-sizes"><label for = "question_one"><h4>Set Q&A below</h4><span> Question 1: </span>
-                      <input type="text" name ="qns1" placeholder = "Question 1" id= "qns1" > <input type="text" name = "ans1"  placeholder = "Answer 1" id = "ans1">
+                      <input type="text" name ="qns1" placeholder = "Question 1" id= "qns1" required> <input type="text" name = "ans1"  placeholder = "Answer 1" id = "ans1" required>
                     </label>
                       <label for = "point_one"><span> Points for Q1: </span>
-                    <input type="number" id="quantity" name="pt1" min="1" max="5">
+                    <input type="number" id="quantity" name="pt1" min="1" max="5" required>
                   </label>
                 </div>
                   </div>
 
                     <div class="pc-row location-2">
                         <label for="location_2"><span>Location 2</span>
-                          <select name="location_2" class="linked-drop-down">
+                          <select name="location_2" class="linked-drop-down" required>
                             <option value="">choose location</option>
                             <option value="Cornwall">Cornwall House</option>
                             <option value="Forum">Forum</option>
@@ -199,17 +198,17 @@
                           </select>
                         </label>
                         <div class="locations-colors pc-col quote-sizes"><label for = "question_two"><span> Question 2: </span>
-                          <input type="text" name ="qns2" placeholder = "Question 2" id= "qns2"  > <input type="text" name = "ans2" placeholder = "Answer 2" id = "ans2">
+                          <input type="text" name ="qns2" placeholder = "Question 2" id= "qns2" required > <input type="text" name = "ans2" placeholder = "Answer 2" id = "ans2" required>
                         </label>
                         <label for = "point_two"><span> Points for Q2: </span>
-                      <input type="number" id="quantity" name="pt2" min="1" max="5">
+                      <input type="number" id="quantity" name="pt2" min="1" max="5" required>
                     </label>
                   </div>
                         </div>
 
                         <div class="pc-row location-3">
                             <label for="location_3"><span>Location 3</span>
-                              <select name="location_3" class="linked-drop-down">
+                              <select name="location_3" class="linked-drop-down" required>
                                 <option value="">choose location</option>
                                 <option value="Cornwall">Cornwall House</option>
                                 <option value="Forum">Forum</option>
@@ -220,10 +219,10 @@
                               </select>
                             </label>
                             <div class="locations-colors pc-col quote-sizes"><label for = "question_three"><span> Question 3: </span>
-                              <input type="text" name ="qns3" placeholder = "Question 3" id= "qns3"  > <input type="text" name = "ans3" placeholder = "Answer 3" id = "ans3">
+                              <input type="text" name ="qns3" placeholder = "Question 3" id= "qns3" required  > <input type="text" name = "ans3" placeholder = "Answer 3" id = "ans3" required>
                             </label>
                             <label for = "point_three"><span> Points for Q3: </span>
-                          <input type="number" id="quantity" name="pt3" min="1" max="5">
+                          <input type="number" id="quantity" name="pt3" min="1" max="5" required>
                         </label>
                       </div>
                             </div>
@@ -299,12 +298,13 @@
                 <div id="rm-location"><a href="javascript:void(0);" class="rmone">Remove one location</a></div> <br/>
 
     			<!--button that will enter the credientials into database-->
-                <button type="submit" name="submit" value= "Submit"> Submit </button>
+                <button type="submit" name="submit" value= "Submit"> Submit </button> <button name="reset" value="Reset" onclick="return confirm('Are you sure you would like to reset the game?');" formnovalidate>Reset The Game</button>
             </form>
             </div>
             </div>
 
           <script>
+
             var i=3;
 var disables = {
   Cornwall: ["Cornwall"],
