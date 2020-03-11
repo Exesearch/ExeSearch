@@ -1,7 +1,7 @@
 //Code to query the database for game progress
 //Written by: Nell
 <?php
-	require_once("configure.php");
+	require_once("./configure.php");
 	$connection = mysqli_connect(server,user,pass,database,"3306");
 	$next_question_query = "SELECT uname FROM Users WHERE uname = 'Yash' LIMIT 1";
 	$next_question_result = mysqli_query($connection, $next_question_query);
