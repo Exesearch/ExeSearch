@@ -23,8 +23,8 @@ if(!isset($_SESSION['username'])){
 
 <body>
 
-<img src= "lightgreen.png" alt="ExeSearch" class="logo">
-
+<div id="center001">
+    <img src= "lightgreen.png" alt="ExeSearch" class="logo">
 <!--Yashaswi added this navigation bar-->
 <nav>
     <ul>
@@ -33,6 +33,8 @@ if(!isset($_SESSION['username'])){
         <li class="faq-icon"><a href="FAQ.html">FAQ</a></li>
     </ul>
 </nav>
+</div>
+
 
 <h2>Welcome <?php echo $_SESSION["username"]; ?></h2>
 
@@ -42,34 +44,33 @@ if(!isset($_SESSION['username'])){
 
             <label for="group_name">You are in group: <?php
 
-            $username = $_SESSION["username"];
+                $username = $_SESSION["username"];
 
-            $result = mysqli_query($conn,"SELECT groupName FROM team WHERE member1='$username' OR member2='$username' OR member3='$username'
+                $result = mysqli_query($conn,"SELECT groupName FROM team WHERE member1='$username' OR member2='$username' OR member3='$username'
                     OR member4='$username' OR member5='$username' OR member6='$username' OR member7='$username' OR member8='$username'
                     OR member9='$username' OR member10='$username';");
 
-            $row = mysqli_fetch_assoc($result);
-            $group_name=$row["groupName"];
+                $row = mysqli_fetch_assoc($result);
+                $group_name=$row["groupName"];
 
-            if(!empty($group_name)){
+                if(!empty($group_name)){
 
-                echo $group_name;
+                    echo $group_name;
 
-            }else{
+                }else{
 
-                echo "-";
-            }
+                    echo "-";
+                }
 
 
-            ?>
+                ?>
             </label>
 
             <form class="your_games" action="profile_action.php" method="POST">
 
                 </br>
-                <label>Press ready when you are at your meeting location for the game. The start button will be enabled
-                    when at least 50% of your team members have clicked the ready button and are at the meeting location.
-                    You may view your progress of each game by using the "View Progress" button.</label>
+                <label>Press start when you are ready to play a game. You may view the progress in the game with
+                the "View Progress" button.</label>
                 </br>
                 </br>
                 <label>Your Games</label>
@@ -89,14 +90,9 @@ if(!isset($_SESSION['username'])){
                         while($row = mysqli_fetch_assoc($do_query0)){
 
                             echo $row['game_name']." ";
-                            echo '<button type="button" name="ready" action="profile_action.php">Ready</button>';
 
-
-                            echo '<button type="button" disabled name="start">Start</button>';
-                            echo '<button type="button" disabled name="progress">View Progress</button>';
-
-                            echo '<label> Meeting location: </label>';
-                            echo $row['meeting_location'];
+                            echo '<input type="submit" id="start" name="start" value="Start">';
+                            echo '<button type="button" name="progress">View Progress</button>';
                             echo '</br>';
                         }
                     }
@@ -106,11 +102,8 @@ if(!isset($_SESSION['username'])){
                 </div>
 
             </form>
-            </div></div></div>
 
-            <div id="frame001">
-                <div id="center001">
-                    <div id ="color001">
+
 
             <form class="profile1" action="profile_action.php" method="POST">
 
@@ -167,14 +160,13 @@ if(!isset($_SESSION['username'])){
 
 
             </br>
-            <form action="logout.php">
-              <button type="submit">Logout</button>
-            </form>
+            <a href="logout.php">Logout</a>
+
         </div>
     </div>
 </div>
 
-
-
 </body>
 </html>
+
+
