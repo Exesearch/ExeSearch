@@ -6,16 +6,12 @@ $game_name = "Welcome";
 //$game_name = $_SESSION['vargame'];
 $username = $_SESSION['username'];
 
-echo $username;
-echo $game_name;
-
 $sql="SELECT * FROM $game_name;";
 
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows>0) {
   while ($row=$result->fetch_assoc()) {
     $rows[] = $row;
-	  echo $rows['points'];
   }
 }else {
   echo "Empty data" . "<br/>";
