@@ -90,7 +90,7 @@ if(!isset($_SESSION['username'])){
                             echo $row['game_name']." ";
                             echo '<button type="button" name="ready" action="profile_action.php">Ready</button>';
 
-                            
+
                             echo '<button type="button" disabled name="start">Start</button>';
                             echo '<button type="button" disabled name="progress">View Progress</button>';
 
@@ -173,3 +173,5 @@ if(!isset($_SESSION['username'])){
 
 </body>
 </html>
+
+
