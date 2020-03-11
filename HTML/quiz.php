@@ -23,11 +23,16 @@ if ($lresult->num_rows>0) {
   echo "Empty data" . "<br/>";
 }
 
+$user_id = $_SESSION['username'];
 $lastloc = mysqli_query($conn, "SELECT MAX(locid) FROM locations;");
 
-$current_question_query = "SELECT $teamid from $gamename WHERE $teamid = TRUE;";
+$team_id = mysqli_query($conn, "SELECT * FROM Users;");
+
+$current_question_query = "SELECT $team_id from $gamename WHERE $team_id = TRUE;";
 $current_question_result = mysqli_query($conn, $current_question_query);
 $current_question = fetch_assoc($current_question_result);
+
+$score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $current_question;");
 
  ?>
 
@@ -235,7 +240,7 @@ xhttp.send();
 
 	//Check that it is within range
       	if (distance <= radius) {
-
+		writeScore(<?php echo $team_id; ?>, <?php echo $score_val; ?>);
         	x.innerHTML ="Success!" ;
            	$('#locations').fadeIn();
             	$('.nextbutton').fadeIn();
