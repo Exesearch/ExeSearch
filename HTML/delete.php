@@ -10,8 +10,8 @@ if (!isset($_GET['game_id']))
 }
 
 //make connection
-//$con = mysqli_connect("emps-sql.ex.ac.uk","yk326","yk326","yk326","3306");
-$con = mysqli_connect("127.0.0.1","root","","registration");
+$con = mysqli_connect("emps-sql.ex.ac.uk","yk326","yk326","yk326","3306");
+
 if ($con->connect_error)
 {
     die('Connect Error (' . $con->connect_errno . ') ' . $con->connect_error);
