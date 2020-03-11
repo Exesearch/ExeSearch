@@ -17,6 +17,7 @@
 			currentQuestion = nextQuestion;
 			location.reload(true);
 		}
+		alert("Current question was the same as next question");
 		setTimeout("refreshPage(currentQuestion)", 5000); //Run every 5 seconds.
 	}
 </script>
