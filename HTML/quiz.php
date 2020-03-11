@@ -1,19 +1,21 @@
 <?php
-require("./connection.php");
+$conn = mysqli_connect("emps-sql.ex.ac.uk","yk326","yk326","yk326","3306");
 session_start();
 
-$game_name = $_SESSION['vargame'];
+$game_name = "Welcome";
+//$game_name = $_SESSION['vargame'];
 $username = $_SESSION['username'];
 
 echo $username;
 echo $game_name;
 
-$sql="SELECT * FROM Welcome;";
+$sql="SELECT * FROM $game_name;";
 
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows>0) {
   while ($row=$result->fetch_assoc()) {
     $rows[] = $row;
+	  echo $rows['points'];
   }
 }else {
   echo "Empty data" . "<br/>";
@@ -35,9 +37,10 @@ $team_id = mysqli_query($conn, "SELECT groupName FROM team WHERE member1='$usern
                     OR member4='$username' OR member5='$username' OR member6='$username' OR member7='$username' OR member8='$username'
                     OR member9='$username' OR member10='$username';");
 
-$current_question_query = "SELECT team_id from $game_name WHERE $team_id = TRUE;";
-$current_question_result = mysqli_query($conn, $current_question_query);
-$current_question = fetch_assoc($current_question_result);
+//$current_question_query = "SELECT team_id from $game_name WHERE $team_id = TRUE;";
+//$current_question_result = mysqli_query($conn, $current_question_query);
+//$current_question = fetch_assoc($current_question_result);
+$current_question = 1;
 
 $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $current_question;");
 
