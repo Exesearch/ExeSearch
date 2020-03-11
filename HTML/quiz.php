@@ -26,7 +26,9 @@ if ($lresult->num_rows>0) {
 $user_id = $_SESSION['username'];
 $lastloc = mysqli_query($conn, "SELECT MAX(locid) FROM locations;");
 
-$team_id = mysqli_query($conn, "SELECT * FROM Users;");
+$team_id = mysqli_query($conn, "SELECT groupName FROM team WHERE member1='$username' OR member2='$username' OR member3='$username'
+                    OR member4='$username' OR member5='$username' OR member6='$username' OR member7='$username' OR member8='$username'
+                    OR member9='$username' OR member10='$username';");
 
 $current_question_query = "SELECT $team_id from $gamename WHERE $team_id = TRUE;";
 $current_question_result = mysqli_query($conn, $current_question_query);
