@@ -8,6 +8,7 @@
 		xhttp.onreadystatechange = function() {
 			if(this.readyState === 4 && this.status === 200) {
 				nextQuestion = this.responseText;
+				alert("HAHAHAHAHAHAHAHHAHAHA");
 			}
 		}
 		xhttp.open("GET", "next_question.php", true);
