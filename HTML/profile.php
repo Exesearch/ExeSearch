@@ -23,7 +23,8 @@ if(!isset($_SESSION['username'])){
 
 <body>
 
-<IMG SRC="lightgreen.png" ALT="ExeSearch" WIDTH=80%>
+<img src="lightgreen.png" alt="ExeSearch">
+
 <h1>ExeSearch</h1>
 
 <!--Yashaswi added this navigation bar-->
