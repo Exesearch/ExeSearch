@@ -1,10 +1,10 @@
 <?php
 require("./connection.php");
 
-$sql="SELECT qnid, question, answer FROM questions;";
+$sql="SELECT qnid, question, answer, points FROM questions;";
 
 $result = mysqli_query($conn, $sql);
-if ($result->num_rows>0) {
+if ($result->num_rows<7) {
   while ($row=$result->fetch_assoc()) {
     $rows[] = $row;
   }
@@ -50,8 +50,8 @@ if ($lresult->num_rows>0) {
 
 <nav id="navigationBar">
   <ul>
-    <li class="profile-icon"><a href="profile.php">Profile</a></li>
-    <li class="quiz-icon"><a href="quiz.php">Quiz</a></li>
+    <li class="profile-icon"><a href="profile.html">Profile</a></li>
+    <li class="quiz-icon"><a href="quiz.html">Quiz</a></li>
     <li class="scoreb-icon"><a href="scoreboard.php">Scoreboard</a></li>
     <li class="faq-icon"><a href="FAQ.html">FAQ</a></li>
   </ul>
@@ -93,10 +93,9 @@ if ($lresult->num_rows>0) {
     <?php foreach($rows as $row){ ?>
       <?php
         echo "var an".$row['qnid']." = 0;";
+        echo "var tryv".$row['qnid']." = 6;";
         ?>
         <?php } ?>
-        var an5 = 0;
-
 	var distance;			//Distance between user location and target
 	var userLat;			//User location latitude
 	var userLatRadians;		//In radians
@@ -108,6 +107,7 @@ if ($lresult->num_rows>0) {
 	var targetLongRadians;		//In radians
 	var longDifference;		//The difference between user and target longitude
         var radius = 0;
+        var totalscore = 0;
 
         var x = document.getElementById("locations");
 
@@ -119,36 +119,41 @@ if ($lresult->num_rows>0) {
               echo "as".$row['qnid']." = input00".$row['qnid'].".value;";
 
               echo "if (as".$row['qnid']." == ".'"'.$row['answer'].'"'.") {";
-              echo "an".$row['qnid']." = 1;";
+              echo "an".$row['qnid']." += 1;";
               echo "input00".$row['qnid'].".value = as".$row['qnid'].";";
               echo "check00".$row['qnid'].".innerHTML = \"<text class=button002>\" + \"✔\" + \"</text>\";";
-              echo "}else{";
+              echo "totalscore +=".$row['points'];
+              echo "}else if(tryv".$row['qnid'].">= 1){";
+              echo "tryv".$row['qnid']."-= 1;";
               echo "input00".$row['qnid'].".value = as".$row['qnid'].";";
-              echo "check00".$row['qnid'].".innerHTML = \"<text class=button00".$row['qnid'].">\" + \"✖ Oops Try Again\" + \"</text>\";";
+              echo "check00".$row['qnid'].".innerHTML = \"<text class=button00".$row['qnid'].">\" + \"✖ Oops Try Again TRIES LEFT: \" + tryv".$row['qnid']." + \"</text>\";";
+              echo "}else  if(tryv".$row['qnid']." < 1){";
+              echo "check00".$row['qnid'].".innerHTML = \"<text class=button00".$row['qnid'].">\" + \"✖ Oops NO MORE TRIES\" + \"</text>\";";
               echo "}";
 
               ?>
               <?php } ?>
+
               <?php foreach($lrows as $lrow){ ?>
                 <?php
-                echo "if (an".$lrow['locid']." == 1){";
-                echo "message001.innerHTML = \"Clue for location ".$lrow['locid']."! <br/> Clue :".$lrow['clue']."\""."\n\$('#message001').fadeIn();"."\n \$('.button002').fadeIn();"."\n \$('.geoclicker').fadeIn();";
-                echo "targetLat = ".$lrow['loclat'];
+                echo "if (an".$lrow['locid']." == 1 || tryv".$row['qnid']." < 1){";
+                echo "\nmessage001.innerHTML = \"Clue for location ".$lrow['locid']."! <br/> Clue :".$lrow['clue']."\""."\n\$('#message001').fadeIn();"."\n \$('.button002').fadeIn();"."\n \$('.geoclicker').fadeIn();";
+                echo "\ntargetLat = ".$lrow['loclat'];
                 echo "\ntargetLong = ".$lrow['loclong'];
                 echo "\nradius = ".$lrow['locrad'];
                 echo "}";
+
             ?>
             <?php } ?>
 
 
-            if (an1 == 5 && an2 == 4 && an3 == 3 && an4 == 2 && an5 == 1) {
+            if (an1 == 1 && an2 == 1 && an3 == 1 && an4 == 1 && an5 == 1) {
                 message001.innerHTML = "Congratulation! You have successfully finished this quiz.";
                 disappear001.innerHTML = "";
                 alert("YOU WON");
                 reload001.innerHTML = "<div id=center001><button class=submitbutton onclick=repeat001()>Repeat</button></div>";
             }
         }
-
             function repeat001() {
                 location.reload();
             }
@@ -221,7 +226,6 @@ if ($lresult->num_rows>0) {
         /** Converts numeric degrees to radians */
         return Value * Math.PI / 180;
     }
-
     </script>
 
 </body>
