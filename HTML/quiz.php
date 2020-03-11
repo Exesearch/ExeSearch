@@ -59,7 +59,7 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript" href="quiz.js"></script>
 
-<body onLoad="refreshPage(<?php echo $current_question; ?>)">
+<body onLoad="refreshPage(<?php $current_question; ?>)">
 
 <h1>ExeSearch</h1>
 
@@ -102,7 +102,7 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
     $('.questions').fadeOut();
     $questions.hide();
     var totalQuestions = $('.questions').size();
-    var currentQuestion = 0;
+    var currentQuestion = <?php echo $current_question; ?> - 1;
     $('.nextbutton').hide();
     $('.geoclicker').hide();
     $('#locations').hide();
@@ -242,7 +242,9 @@ xhttp.send();
 
 	//Check that it is within range
       	if (distance <= radius) {
-		writeScore(<?php echo $team_id; ?>, <?php echo $score_val; ?>);
+		writeScore(<?php $team_id; ?>, <?php $score_val; ?>);
+		<?php $current_question = $current_question + 1; ?>
+		currentQuestion = currentQuestion + 1;
         	x.innerHTML ="Success!" ;
            	$('#locations').fadeIn();
             	$('.nextbutton').fadeIn();
