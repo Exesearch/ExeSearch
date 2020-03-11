@@ -2,7 +2,9 @@
 require("./connection.php");
 session_start();
 
-$sql="SELECT qnid, question, answer, points FROM questions;";
+$game_name = $_SESSION[''];
+
+$sql="SELECT question_id, question, answer, points, location FROM $game_name;";
 
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows>0) {
