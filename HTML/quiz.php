@@ -1,10 +1,10 @@
 <?php
-$conn = mysqli_connect("emps-sql.ex.ac.uk","yk326","yk326","yk326","3306");
+require("./connection.php");
 session_start();
 
 $game_name = "Welcome";
-//$game_name = $_SESSION['vargame'];
-$username = $_SESSION['username'];
+$user = $_SESSION['username'];
+
 
 $sql="SELECT * FROM $game_name;";
 
@@ -28,7 +28,6 @@ if ($lresult->num_rows>0) {
 }
 
 $lastloc = mysqli_query($conn, "SELECT MAX(locid) FROM locations;");
-
 $team_id = mysqli_query($conn, "SELECT groupName FROM team WHERE member1='$username' OR member2='$username' OR member3='$username'
                     OR member4='$username' OR member5='$username' OR member6='$username' OR member7='$username' OR member8='$username'
                     OR member9='$username' OR member10='$username';");
@@ -39,6 +38,7 @@ $team_id = mysqli_query($conn, "SELECT groupName FROM team WHERE member1='$usern
 $current_question = 1;
 
 $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $current_question;");
+
 
  ?>
 
@@ -56,22 +56,20 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
 
 	<title>ExeSearch</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="refresh.js"></script>
-	<script src="scorewrite.js"></script>
 
 </head>
 <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript" href="quiz.js"></script>
 
-<body onLoad="refreshPage(<?php $current_question; ?>)">
+<body>
 
 <h1>ExeSearch</h1>
 
 <nav id="navigationBar">
   <ul>
-    <li class="profile-icon"><a href="profile.php">Profile</a></li>
-    <li class="quiz-icon"><a href="quiz.php">Quiz</a></li>
+    <li class="profile-icon"><a href="profile.html">Profile</a></li>
+    <li class="quiz-icon"><a href="quiz.html">Quiz</a></li>
     <li class="scoreb-icon"><a href="scoreboard.php">Scoreboard</a></li>
-    <li class="faq-icon"><a href="FAQ.php">FAQ</a></li>
+    <li class="faq-icon"><a href="FAQ.html">FAQ</a></li>
   </ul>
 </nav>
 
@@ -105,7 +103,7 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
     $('.questions').fadeOut();
     $questions.hide();
     var totalQuestions = $('.questions').size();
-    var currentQuestion = <?php echo $current_question; ?> - 1;
+    var currentQuestion = 0;
     $('.nextbutton').hide();
     $('.geoclicker').hide();
     $('#locations').hide();
@@ -114,6 +112,7 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
       <?php
         echo "var an".$row['qnid']." = 0;";
         echo "var tryv".$row['qnid']." = 6;";
+        echo "var qp".$row['qnid']."=".$row['points'].";";
         ?>
         <?php } ?>
 	var distance;			//Distance between user location and target
@@ -127,7 +126,6 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
 	var targetLongRadians;		//In radians
 	var longDifference;		//The difference between user and target longitude
         var radius = 0;
-        var totalscore = 0;
         var currscore = 0;
 
         var x = document.getElementById("locations");
@@ -139,6 +137,7 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
               <?php
               echo "as".$row['qnid']." = input00".$row['qnid'].".value;";
               echo "if (as".$row['qnid']." == ".'"'.$row['answer'].'"'.") {";
+              echo "currscore = qp".$row['qnid'].";";
               echo "an".$row['qnid']." += 1;";
               echo "input00".$row['qnid'].".value = as".$row['qnid'].";";
               echo "check00".$row['qnid'].".innerHTML = \"<text class=button002>\" + \"✔\" + \"</text>\";";
@@ -161,7 +160,6 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
                 echo "\ntargetLat = ".$lrow['loclat'];
                 echo "\ntargetLong = ".$lrow['loclong'];
                 echo "\nradius = ".$lrow['locrad'];
-                echo "\nalert(totalscore);";
                 echo "}";
 
             ?>
@@ -207,15 +205,6 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
     });
 
 });
-function writeScore(team_id, score_value) {
-var xhttp;
-xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-
-}
-xhttp.open("GET", "score_write.php?t="+team_id+"s="+score_value, true);
-xhttp.send();
-}
     function getLocation() {
 	//Written by: Nell, modified by: Jacob
 	//Check if geolocation is "true" i.e. enabled
@@ -245,9 +234,7 @@ xhttp.send();
 
 	//Check that it is within range
       	if (distance <= radius) {
-		writeScore(<?php $team_id; ?>, <?php $score_val; ?>);
-		<?php $current_question = $current_question + 1; ?>
-		currentQuestion = currentQuestion + 1;
+
         	x.innerHTML ="Success!" ;
            	$('#locations').fadeIn();
             	$('.nextbutton').fadeIn();
