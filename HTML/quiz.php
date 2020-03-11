@@ -25,6 +25,9 @@ if ($lresult->num_rows>0) {
 
 $lastloc = mysqli_query($conn, "SELECT MAX(locid) FROM locations;");
 
+$current_question_query = "SELECT $teamid from $gamename WHERE $teamid = TRUE;";
+$current_question_result = mysqli_query($conn, $current_question_query);
+$current_question = fetch_assoc($current_question_result);
 
  ?>
 
@@ -42,12 +45,14 @@ $lastloc = mysqli_query($conn, "SELECT MAX(locid) FROM locations;");
 
 	<title>ExeSearch</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="refresh.js"></script>
+	<script src="scorewrite.js"></script>
 
 </head>
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript" href="quiz.js"></script>
 
-<body>
+<body onLoad="refreshPage($current_question)">
 
 <h1>ExeSearch</h1>
 
