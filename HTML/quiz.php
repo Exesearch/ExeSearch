@@ -32,7 +32,7 @@ $team_id = mysqli_query($conn, "SELECT groupName FROM team WHERE member1='$usern
                     OR member4='$username' OR member5='$username' OR member6='$username' OR member7='$username' OR member8='$username'
                     OR member9='$username' OR member10='$username';");
 
-$current_question_query = "SELECT $team_id from $gamename WHERE $team_id = TRUE;";
+$current_question_query = "SELECT team_id from $game_name WHERE $team_id = TRUE;";
 $current_question_result = mysqli_query($conn, $current_question_query);
 $current_question = fetch_assoc($current_question_result);
 
