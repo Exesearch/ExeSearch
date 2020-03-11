@@ -7,15 +7,12 @@ function refreshPage(currentQuestion) {
 	xhttp.onreadystatechange = function() {
 		if(this.readyState === 4 && this.status === 200) {
 			nextQuestion = this.responseText;
-			alert(nextQuestion);
 		}
 	};
 	xhttp.open("GET", "next_question.php", true);
 	xhttp.send();
 	if(currentQuestion != nextQuestion) {
-		currentQuestion = nextQuestion;
 		location.reload(true);
 	}
-	alert("Current question was the same as next question");
 	setTimeout("refreshPage(currentQuestion)", 5000); //Run every 5 seconds.
 }
