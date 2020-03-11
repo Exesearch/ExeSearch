@@ -22,6 +22,8 @@ if(!isset($_SESSION['username'])){
 </head>
 
 <body>
+
+<IMG SRC="lightgreen.png" ALT="ExeSearch" WIDTH=80%>
 <h1>ExeSearch</h1>
 
 <!--Yashaswi added this navigation bar-->
@@ -173,5 +175,3 @@ if(!isset($_SESSION['username'])){
 
 </body>
 </html>
-
-
