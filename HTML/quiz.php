@@ -52,7 +52,7 @@ $current_question = fetch_assoc($current_question_result);
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript" href="quiz.js"></script>
 
-<body onLoad="refreshPage($current_question)">
+<body onLoad="refreshPage(<?php echo $current_question; ?>)">
 
 <h1>ExeSearch</h1>
 
