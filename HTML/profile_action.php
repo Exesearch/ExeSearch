@@ -47,7 +47,8 @@ if (isset($_POST['save2'])) {
 }
 
 if (isset($_POST['start'])){
-
+    echo "<script src='createprogress.js'></script>";
     header('Location: ./quiz.php');
 
 }
+?>
