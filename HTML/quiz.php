@@ -1,10 +1,11 @@
 <?php
 require("./connection.php");
+session_start();
 
 $sql="SELECT qnid, question, answer, points FROM questions;";
 
 $result = mysqli_query($conn, $sql);
-if ($result->num_rows<7) {
+if ($result->num_rows>0) {
   while ($row=$result->fetch_assoc()) {
     $rows[] = $row;
   }
@@ -21,6 +22,8 @@ if ($lresult->num_rows>0) {
 }else {
   echo "Empty data" . "<br/>";
 }
+
+$lastloc = mysqli_query($conn, "SELECT MAX(locid) FROM locations;");
 
 
  ?>
@@ -39,7 +42,6 @@ if ($lresult->num_rows>0) {
 
 	<title>ExeSearch</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="refresh.js"></script>
 
 </head>
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
@@ -65,7 +67,7 @@ if ($lresult->num_rows>0) {
     <div id="center001">
       <?php foreach($rows as $row){ ?>
         <?php
-        echo "<div class=\"questions\"> Question ".$row['qnid'].":".$row['question'];
+        echo "<div class=\"questions\"> Question ".$row['qnid'].":".$row['question']." POINTS:".$row['points']." ";
         echo "<input id=\"input00".$row['qnid'].'"'."onkeyup=\"this.value = this.value.toUpperCase();\""." size=\"15\">";
         echo "<text class=\"button002\" id=\"check00".$row['qnid']."\"></text>";
         echo "</div>";
@@ -78,6 +80,8 @@ if ($lresult->num_rows>0) {
       <br /><p id="locations"></p><br />
     </div>
   </div>
+</div>
+<p id = "saveWarningText"></p>
 
 
     <script>
@@ -109,6 +113,7 @@ if ($lresult->num_rows>0) {
 	var longDifference;		//The difference between user and target longitude
         var radius = 0;
         var totalscore = 0;
+        var currscore = 0;
 
         var x = document.getElementById("locations");
 
@@ -118,17 +123,15 @@ if ($lresult->num_rows>0) {
             <?php foreach($rows as $row){ ?>
               <?php
               echo "as".$row['qnid']." = input00".$row['qnid'].".value;";
-
               echo "if (as".$row['qnid']." == ".'"'.$row['answer'].'"'.") {";
               echo "an".$row['qnid']." += 1;";
               echo "input00".$row['qnid'].".value = as".$row['qnid'].";";
               echo "check00".$row['qnid'].".innerHTML = \"<text class=button002>\" + \"✔\" + \"</text>\";";
-              echo "totalscore +=".$row['points'];
               echo "}else if(tryv".$row['qnid'].">= 1){";
               echo "tryv".$row['qnid']."-= 1;";
               echo "input00".$row['qnid'].".value = as".$row['qnid'].";";
               echo "check00".$row['qnid'].".innerHTML = \"<text class=button00".$row['qnid'].">\" + \"✖ Oops Try Again TRIES LEFT: \" + tryv".$row['qnid']." + \"</text>\";";
-              echo "}else  if(tryv".$row['qnid']." < 1){";
+              echo "}else if(tryv".$row['qnid']." < 1){";
               echo "check00".$row['qnid'].".innerHTML = \"<text class=button00".$row['qnid'].">\" + \"✖ Oops NO MORE TRIES\" + \"</text>\";";
               echo "}";
 
@@ -137,23 +140,26 @@ if ($lresult->num_rows>0) {
 
               <?php foreach($lrows as $lrow){ ?>
                 <?php
-                echo "if (an".$lrow['locid']." == 1 || tryv".$row['qnid']." < 1){";
-                echo "\nmessage001.innerHTML = \"Clue for location ".$lrow['locid']."! <br/> Clue :".$lrow['clue']."\""."\n\$('#message001').fadeIn();"."\n \$('.button002').fadeIn();"."\n \$('.geoclicker').fadeIn();";
+                echo "if (an".$lrow['locid']." == 1 || tryv".$lrow['locid']."<1){";
+                echo "\n \$('.nextbutton').fadeIn();";
+                echo "\nmessage001.innerHTML = \"Clue for location ".$lrow['locid']."! <br/> Clue: ".$lrow['clue']."\""."\n\$('#message001').fadeIn();"."\n \$('.button002').fadeIn();"."\n \$('.geoclicker').fadeIn();";
                 echo "\ntargetLat = ".$lrow['loclat'];
                 echo "\ntargetLong = ".$lrow['loclong'];
                 echo "\nradius = ".$lrow['locrad'];
+                echo "\nalert(totalscore);";
                 echo "}";
 
             ?>
             <?php } ?>
 
-
-            if (an1 == 1 && an2 == 1 && an3 == 1 && an4 == 1 && an5 == 1) {
+            if (an1 == 5) {
                 message001.innerHTML = "Congratulation! You have successfully finished this quiz.";
                 disappear001.innerHTML = "";
-                alert("YOU WON");
                 reload001.innerHTML = "<div id=center001><button class=submitbutton onclick=repeat001()>Repeat</button></div>";
-            }
+
+
+
+              }
         }
             function repeat001() {
                 location.reload();
@@ -171,9 +177,11 @@ if ($lresult->num_rows>0) {
 
         //if there are no more questions do stuff
         if (currentQuestion == totalQuestions) {
-
             alert("YOU WON");
             $('#message001').fadeIn();
+            alert(totalscore);
+            message001.innerHTML = "Congratulation! You have successfully finished this quiz.";
+            disappear001.innerHTML = "";
 
         } else {
 
@@ -184,7 +192,15 @@ if ($lresult->num_rows>0) {
     });
 
 });
+function writeScore(team_id, score_value) {
+var xhttp;
+xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
 
+}
+xhttp.open("GET", "score_write.php?t="+team_id+"s="+score_value, true);
+xhttp.send();
+}
     function getLocation() {
 	//Written by: Nell, modified by: Jacob
 	//Check if geolocation is "true" i.e. enabled
@@ -214,6 +230,7 @@ if ($lresult->num_rows>0) {
 
 	//Check that it is within range
       	if (distance <= radius) {
+
         	x.innerHTML ="Success!" ;
            	$('#locations').fadeIn();
             	$('.nextbutton').fadeIn();
