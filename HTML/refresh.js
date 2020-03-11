@@ -10,7 +10,7 @@
 				nextQuestion = this.responseText;
 				alert(nextQuestion);
 			}
-		}
+		};
 		xhttp.open("GET", "next_question.php", true);
 		xhttp.send();
 		if(currentQuestion != nextQuestion) {
