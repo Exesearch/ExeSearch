@@ -1,0 +1,65 @@
+USE yk326;
+
+CREATE TABLE Users (
+                       user_id int not null auto_increment,
+                       uname varchar(20) not null,
+                       passwd varchar(100) not null,
+                       email varchar(20) not null,
+                       occupation varchar(20) not null,
+                       primary key (user_id)
+);
+
+CREATE TABLE team (
+                       group_id int not null auto_increment,
+                       groupName varchar(20) not null,
+                       score int not null,
+                       member1 varchar(20) null,
+                       member2 varchar(20) null,
+                       member3 varchar(20) null,
+                       member4 varchar(20) null,
+                       member5 varchar(20) null,
+                       member6 varchar(20) not null,
+                       member7 varchar(20) not null,
+                       member8 varchar(20) not null,
+                       member9 varchar(20) not null,
+                       member10 varchar(20) not null,
+                       start int not null,
+                       primary key (group_id)
+);
+
+CREATE TABLE tutors (
+                      tutor_id int not null auto_increment,
+                      tutor_name varchar(20) not null,
+                      group1 varchar(20),
+                      group2 varchar(20),
+                      group3 varchar(20),
+                      group4 varchar(20),
+                      group5 varchar(20),
+                      primary key (tutor_id)
+);
+
+CREATE TABLE games (
+                        game_id int not null auto_increment,
+                        game_name varchar(20) not null,
+                        meeting_location varchar(20) not null,
+                        primary key (game_id)
+                        );
+
+CREATE TABLE locations (
+                                         locname varchar(20) NOT NULL,
+                                         loclong float NOT NULL,
+                                         loclat float NOT NULL,
+                                         locrad int(11) NOT NULL,
+                                         clue text NOT NULL,
+                                         PRIMARY KEY (locname)
+);
+
+
+
+INSERT INTO locations ( locname, loclong, loclat, locrad, clue) VALUES
+('Cornwall', -3.52973, 50.735, 80, 'Clue: I am standing at the bottom of a slope on the University of Exeter Streatham Campus and I am looking up and I can see a silver looking building with "Students Guild" written on it and as I approach it, there seems to be a club called "The Lemon Grove" there. Which building am I walking towards?'),
+( 'Harrisons', -3.53263, 50.7377, 50, 'Clue: Rearrange these letters to get to your location "I S H A R R O N"'),
+( 'Forum', -3.53353, 50.7352, 80, 'Clue: JK Rowling revealed that a Albus Dumbledore, a character from Harry Potter, was an elaborate metaphor for a building on Streatham Campus. What is the name of ths building?'),
+( 'Northcott', -3.53522, 50.7358, 50, 'Clue: If you want to see a bit of "drama", you go to this place. Where is it?'),
+( 'GreatHall', -3.53449, 50.7354, 50, 'Clue: You may need some help from current Exeter students for this question but, this place where exams usually take place in. Where is it?'),
+( 'Amory', -3.531698, 50.736707, 50, 'Clue: The name of this place has the Spanish word for love in it. What is it?');
