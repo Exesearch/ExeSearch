@@ -1,3 +1,5 @@
+//Writes the data sent through the GET request to the database
+//Written by: Nell
 <?php
 	$teamid = $_GET['t'];
 	$scoreval = $_GET['s'];
