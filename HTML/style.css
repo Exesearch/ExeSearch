@@ -219,16 +219,16 @@ body{
 #center001 {
 		text-align: center;
 }
-
-img {
+/*Might be deprecated????
+.quiz {
 	width: 70%;
 	max-width: 500px;
-	/* padding:5px; */
 	border: 10px solid;
 	border-image: radial-gradient(#aee250, #295232) 1;
 	border-radius: 0px;
-	/* background-color: #e6e6e6; */
-}
+	/* background-color: #e6e6e6;
+}*/
+
 
 h1{
 	display:block;

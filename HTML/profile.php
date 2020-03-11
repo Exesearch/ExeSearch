@@ -23,7 +23,7 @@ if(!isset($_SESSION['username'])){
 
 <body>
 
-<img src= "lightgreen.png" alt="ExeSearch" class=".logo">
+<img src= "lightgreen.png" alt="ExeSearch" class="logo">
 
 <h1>ExeSearch</h1>
 
