@@ -192,9 +192,9 @@ th, td {
 /*Quiz page formatting*/
 
 body{
-	background-image: linear-gradient(rgba(0,50,0,0.6),rgba(0, 0, 0, 0.5)),url(treasure.jfif);
-	height:100vh;
-	background-size: cover;
+	background-image: url(tile.png);
+	/*height:100vh;*/
+	/* background-size: cover; */
 	background-position:center;
 }
 
@@ -202,11 +202,16 @@ body{
 	background-color: #a8efab75;
 	width: 80%;
 	height: auto;
-	padding: 5px;
-	position: relative;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	position: inherit;
 	z-index:1;
-	margin:0 auto 100px;
+	margin: 0 auto 100px;
+	margin-bottom: 15px;
 	text-align:center;
+	box-sizing: border-box;
 }
 
 #color001 {
@@ -438,7 +443,7 @@ nav ul {
 
 nav ul li {
 	float: left;
-	width: 25%;
+	width: 33.3%;
 	height: 40px;
 	line-height: 40px;
 	text-align: center;
