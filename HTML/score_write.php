@@ -13,6 +13,6 @@
 	$next_question = $current_question + 1;
 	$progress_query = "UPDATE $game_name SET completed = FALSE WHERE question_id = $current_question;";
 	$progress_result = mysqli_query($connection, $progress_query);
-	$progress_query_2 = "UPDATE $game_name SET completed = TRUE WHERE question_id = $next_question;";
+	$progress_query_2 = "IF EXISTS (SELECT * FROM $game_name WHERE question_id = $next_question) THEN UPDATE $game_name SET completed = TRUE WHERE question_id = $next_question;";
 	$progress_result_2 = mysqli_query($connection, $progress_query_2);
 ?>
