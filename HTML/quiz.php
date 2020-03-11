@@ -16,7 +16,7 @@ if ($result->num_rows>0) {
   echo "Empty data" . "<br/>";
 }
 
-$lsql = "SELECT locid, locname, loclong, loclat, clue, locrad FROM locations;";
+$lsql = "SELECT * FROM locations;";
 $lresult = mysqli_query($conn, $lsql);
 if ($lresult->num_rows>0) {
   while ($lrow=$lresult->fetch_assoc()) {
