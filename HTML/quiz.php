@@ -66,10 +66,10 @@ $score_val = mysqli_query($conn, "SELECT points FROM $game_name WHERE quid = $cu
 
 <nav id="navigationBar">
   <ul>
-    <li class="profile-icon"><a href="profile.html">Profile</a></li>
-    <li class="quiz-icon"><a href="quiz.html">Quiz</a></li>
+    <li class="profile-icon"><a href="profile.php">Profile</a></li>
+    <li class="quiz-icon"><a href="quiz.php">Quiz</a></li>
     <li class="scoreb-icon"><a href="scoreboard.php">Scoreboard</a></li>
-    <li class="faq-icon"><a href="FAQ.html">FAQ</a></li>
+    <li class="faq-icon"><a href="FAQ.php">FAQ</a></li>
   </ul>
 </nav>
 
