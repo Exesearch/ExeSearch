@@ -8,7 +8,7 @@ $username = $_SESSION['username'];
 echo $username;
 echo $game_name;
 
-$sql="SELECT * FROM $game_name;";
+$sql="SELECT * FROM Welcome;";
 
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows>0) {
