@@ -2,9 +2,10 @@
 require("./connection.php");
 session_start();
 
-$game_name = $_SESSION[''];
+$game_name = $_SESSION['vargame'];
+$username = $_SESSION['username'];
 
-$sql="SELECT question_id, question, answer, points, location FROM $game_name;";
+$sql="SELECT * FROM $game_name;";
 
 $result = mysqli_query($conn, $sql);
 if ($result->num_rows>0) {
@@ -25,7 +26,6 @@ if ($lresult->num_rows>0) {
   echo "Empty data" . "<br/>";
 }
 
-$user_id = $_SESSION['username'];
 $lastloc = mysqli_query($conn, "SELECT MAX(locid) FROM locations;");
 
 $team_id = mysqli_query($conn, "SELECT groupName FROM team WHERE member1='$username' OR member2='$username' OR member3='$username'
