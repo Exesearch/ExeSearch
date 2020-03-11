@@ -17,6 +17,6 @@
 			currentQuestion = nextQuestion;
 			location.reload(true);
 		}
-		setTimeout("refreshPage()", 5000); //Run every 5 seconds.
+		setTimeout("refreshPage(currentQuestion)", 5000); //Run every 5 seconds.
 	}
 </script>
