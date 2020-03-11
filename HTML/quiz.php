@@ -5,6 +5,8 @@ session_start();
 $game_name = $_SESSION['vargame'];
 $username = $_SESSION['username'];
 
+echo $username;
+
 $sql="SELECT * FROM $game_name;";
 
 $result = mysqli_query($conn, $sql);
