@@ -6,6 +6,7 @@ $game_name = $_SESSION['vargame'];
 $username = $_SESSION['username'];
 
 echo $username;
+echo $game_name;
 
 $sql="SELECT * FROM $game_name;";
 
