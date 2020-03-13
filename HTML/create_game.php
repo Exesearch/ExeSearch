@@ -56,19 +56,16 @@ if(isset($_POST['game_name'])){
         if(!empty($question1) && !empty($answer1) && !empty($points1)&& !empty($location1)){
             $query3 = "INSERT INTO $game_name(question, answer, points, location) VALUES ('$question1', '$answer1','$points1', '$location1');";
             $do_query3 = mysqli_query($conn, $query3);
-            echo $query3;
         }
 
         if(!empty($question2) && !empty($answer2) && !empty($points2)&& !empty($location2)) {
             $query4 = "INSERT INTO $game_name(question, answer, points, location) VALUES ('$question2', '$answer2','$points2', '$location2');";
             $do_query4 = mysqli_query($conn, $query4);
-            echo $query4;
         }
 
         if(!empty($question3) && !empty($answer3) && !empty($points3)&& !empty($location3)) {
             $query5 = "INSERT INTO $game_name(question, answer, points, location) VALUES ('$question3', '$answer3','$points3', '$location3');";
             $do_query5 = mysqli_query($conn, $query5);
-            echo $query5;
         }
 
         if(!empty($question4) && !empty($answer4) && !empty($points4)&& !empty($location4)) {
